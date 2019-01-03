@@ -1,0 +1,365 @@
+
+$color-6: #666;
+$color-red: #e43130;
+$color-96: #969696;
+
+@mixin flex ($direction: row){
+  display: -webkit-flex;
+  display: flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  flex-direction: $direction;
+}
+
+@mixin margin-padding{
+  margin: 0;
+  padding: 0;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-size: 14px;
+  color: $color-6;
+  background-color: white;
+  cursor: pointer;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+//顶部导航
+.red-bg{
+  background-color: $color-red;
+}
+.nav{
+  height: 44px;
+  @include flex();
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+  width: 100%;
+  position: fixed;
+  z-index: 33;
+  max-width: 640px;
+  min-width: 320px;
+
+  .nav-search{
+    width: 80%;
+
+    .ui.icon.input{
+      width: 100%;
+      @include flex();
+      align-items: center;
+
+      .nav-icon{
+        position: absolute;
+        left: 10px;
+        @include flex();
+        align-items: center;
+
+        .iconfont{
+          padding: 0 4px;
+        }
+
+        .line{
+          color: #e5e5e5;
+          font-size: 20px;
+        }
+
+        .icon-jingdong{
+          color: $color-red;
+          font-size: 21px;
+        }
+
+        .icon-sousuo{
+          left: 40px;
+          color: $color-96;
+          font-size: 18px;
+        }
+      }
+
+      .prompt{
+        width: 100%!important;
+        padding: 6px 15px 6px 95px!important;
+        border: none;
+        outline: none;
+
+        &:focus{
+          border: none;
+          outline: none;
+        }
+      }
+
+
+    }
+  }
+
+  .nav-login a,
+  .nav-menu a{
+    color: white;
+  }
+}
+
+//主体部分
+.main{
+  .swiper-container .swiper-wrapper .swiper-slide{
+    height: 180px;
+    img{
+      height: 100%;
+    }
+  }
+
+  .menu{
+    @include flex();
+    flex-wrap: wrap;
+
+    .item{
+      width: 20%;
+      @include flex(column);
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+      color: $color-6;
+      font-size: 12px;
+
+      img{
+        width: 40px;
+      }
+    }
+  }
+
+  .seckill .header{
+    padding: 16px 4px;
+    @include flex();
+    align-items: center;
+    justify-content: space-between;
+
+    .title h2{
+      font-size: 16px;
+      color: $color-red;
+      @include margin-padding;
+      display: inline-block;
+    }
+
+    .more{
+      color: $color-red;
+      font-size: 12px;
+
+      .iconfont{
+        margin-left: 2px;
+        color: $color-red;
+        font-size: 12px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .seckill .body .products-list .swiper-wrapper{
+    min-width: 640px;
+    //overflow: hidden;
+    width: 100%;
+    @include flex();
+
+     .swiper-slide{
+      @include flex(column);
+      width: 16%;
+      align-items: center;
+      padding: 6px 6px 6px 0;
+
+      .new-count{
+        color: $color-red;
+        font-size: 16px;
+        font-weight: 800;
+
+        .money{
+          font-size: 12px;
+          margin-right: 2px;
+        }
+
+      }
+
+      .old-count{
+        font-size: 12px;
+        text-decoration: line-through;
+      }
+
+      a img{
+        width: 100%;
+      }
+    }
+  }
+
+  .recommend{
+    padding-bottom: 80px;
+    background-color: #f3f3f3;
+
+    .header{
+      width: 100%;
+      vertical-align: middle;
+      text-align: center;
+      padding: 14px 0;
+      margin-top: 10px;
+      position: relative;
+
+      &:before{
+        content: "";
+        border-bottom: 1px solid rgba(193, 193, 193, 0.31);
+        display: block;
+        position: absolute;
+        top: 22px;
+        width: 35%;
+        left: 10px;
+      }
+
+      &:after{
+        content: "";
+        border-bottom: 1px solid rgba(193, 193, 193, 0.31);
+        display: block;
+        position: absolute;
+        top: 22px;
+        width: 35%;
+        right: 10px;
+      }
+    }
+
+    .content{
+      @include flex();
+      @include margin-padding;
+      flex-wrap: wrap;
+
+      .item{
+        width: 50%;
+        list-style-type: none;
+        padding-right: 2px;
+        margin-bottom: 4px;
+
+        &:nth-child(even){
+          padding-right: 0!important;
+        }
+
+        .title{
+          background-color: white;
+          padding: 6px 6px;
+          font-size: 13px;
+          //display: inline-block;
+          overflow: hidden;
+          -webkit-line-clamp: 2;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          word-break: break-all;
+          line-height: 20px;
+        }
+
+        .info{
+          background-color: white;
+          padding: 8px 6px;
+          padding-bottom: 20px;
+          .count{
+            color: $color-red;
+            font-size: 16px;
+
+            .money{
+              font-size: 12px;
+              margin-right: 4px;
+            }
+          }
+
+          .like{
+            padding: 2px 4px;
+            border: 1px solid $color-96;
+            float: right;
+            border-radius: 3px;
+            font-size: 12px;
+          }
+        }
+
+        img{
+          width: 100%;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+//尾部导航
+.footer{
+  position: fixed;
+  @include flex();
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  box-shadow: 0 0 10px 0 #e5e5e5;
+  //position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: white;
+
+  .item{
+    @include flex(column);
+    text-align: center;
+
+    a .iconfont{
+      font-size: 22px;
+      color: $color-96;
+    }
+
+    span{
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+  }
+
+  .item.active{
+    color: $color-red;
+    a .iconfont{
+      color: $color-red;
+    }
+  }
+}
+
+//回到顶部
+#totop{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.8;
+  position: fixed;
+  right: 10px;
+  bottom: 70px;
+  @include flex();
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-96;
+
+  .iconfont{
+    font-size: 25px;
+    color: $color-96;
+  }
+}
+
+@media screen and (min-device-width: 768px){
+  .main{
+    .swiper-container .swiper-wrapper .swiper-slide{
+      height: 260px;
+
+      img{
+        height: 100%;
+      }
+
+
+    }
+    .seckill .body .products-list {
+      min-width: 640px;
+      overflow: hidden;
+    }
+  }
+}
